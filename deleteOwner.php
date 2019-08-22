@@ -8,9 +8,9 @@
 
     $data = json_decode($json);
 
-    $name = $data->nametwo;
+    $idToDelete = $data->id;
 
-    $result = pg_query($con, "INSERT INTO owner (name) VALUES('$name')");
+    $result = pg_query($con, "DELETE FROM \"owner\" WHERE id=$idToDelete;");
     if( !$result) {
         die("Error in SQL query: " . pg_last_error());
     }
