@@ -1,8 +1,8 @@
 <?php
 //Native code to use PostgreSQL with PHP
     $con = pg_connect("host=localhost dbname=php_react") or die("Could not connect to Server\n);");
-    
-    $name = pg_escape_string($_POST[adam]);
+   
+    $name = $_POST['name'];
 
     $result = pg_query($con, "INSERT INTO owner (name) VALUES('$name')");
     if( !$result) {
