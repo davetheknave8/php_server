@@ -8,9 +8,14 @@
 
     $data = json_decode($json);
 
-    $name = $data->name;
+    $owner = $data->owner;
+    $pet_name = $data->pet_name;
+    $color = $data->color;
+    $breed = $data->breed;
 
-    $result = pg_query($con, "INSERT INTO owner (name) VALUES('$name')");
+
+    $result = pg_query($con, "INSERT INTO pets (owner_id, pet_name, breed, color)
+    VALUES ('$owner', '$pet_name', '$color', '$breed');");
     if( !$result) {
         die("Error in SQL query: " . pg_last_error());
     }
@@ -18,3 +23,5 @@
     echo $name;
 
     pg_close($con);
+
+    //"INSERT INTO owner (name) VALUES('$name')"
