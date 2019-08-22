@@ -4,11 +4,7 @@
    
    
     // $name = json_decode($_POST["name"])
-    $json = file_get_contents('php://input');
-
-    $data = json_decode($json);
-
-    $idToDelete = $data->id;
+    $idToDelete = $_GET["id"];
 
     $result = pg_query($con, "DELETE FROM \"owner\" WHERE id=$idToDelete;");
     if( !$result) {
